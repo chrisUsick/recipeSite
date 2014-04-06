@@ -26,6 +26,8 @@ node_modules
 
 # visual studios files
 *.sln
+*.njsproj
+*.suo
 
 # ignore javscript files
 *.js
