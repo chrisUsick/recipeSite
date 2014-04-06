@@ -28,6 +28,7 @@ node_modules
 *.sln
 *.njsproj
 *.suo
+*.v11.suo
 
 # ignore javscript files
 *.js
