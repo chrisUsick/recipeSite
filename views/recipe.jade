@@ -1,0 +1,42 @@
+mixin recipe(rec, panelId, recId)
+	//- to be included in a `.panel-group` with id of `id`
+	.panel.panel-default
+				.panel-heading
+					h3.panel-title
+						a(data-toggle='collapse', data-parent!=panelId, href!='#' + recId)=rec.title
+				.panel-collapse.collapse(id!=recId)
+					.panel-body
+						p= rec.desc
+						p yield: #{rec.yield}
+						h2 ingredients
+						ul
+							for i in rec.ingredients
+								li= i
+						h2 directions
+						ul
+							each d, n in rec.directions
+								li
+									h3 step #{n + 1}
+									p=d	
+						
+						form.ajaxForm(id!=rec._id, method="POST", action="/addNote")
+							input(name='id', type='hidden', style='display:none;', value!=rec._id)
+							input(name='notes', type='hidden')
+							input(type='submit', style='display: none;')
+
+						textarea(rows=8,name='notes', form!=rec._id, style='width:100%;', placeholder='add some notes!')= rec.notes
+
+mixin recipe2(rec)
+	h2= rec.title
+	p= rec.desc
+	p yield: #{rec.yield}
+	h2 ingredients
+	ul
+		for i in rec.ingredients
+			li= i
+	h2 directions
+	ul
+		each d, n in rec.directions
+			li
+				h3 step #{n + 1}
+				p=d

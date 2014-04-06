@@ -1,0 +1,15 @@
+{
+  "name": "recipeSite",
+  "version": "0.0.0",
+  "description": "recipeSite",
+  "main": "app.js",
+  "author": {
+    "name": "e6410",
+    "email": ""
+  },
+  "dependencies": {
+    "express": "3.4.4",
+    "jade": "*",
+    "stylus": "*"
+  }
+}

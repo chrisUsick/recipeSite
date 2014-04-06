@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  p paste a url here to get it parsed
+  form#urlForm(method='POST', action='/url')
+    //- if messages.
+    label(for='url') url
+    input#url(name="url")
+    input(type="submit")
+
+  for rec in recipes
+    h2= rec.title 
+      span(style="") <i>#{rec.yield}</i>
+    if rec.contrib && rec.contrib.name
+      p
+        i contributed to #{title} by: #{rec.contrib.name}
+    p= rec.desc

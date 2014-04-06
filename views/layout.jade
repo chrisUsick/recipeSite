@@ -1,0 +1,37 @@
+doctype html
+include mixins/navbar
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+    title= title
+    link(href="/stylesheets/bootstrap.min.css", rel="stylesheet")
+    script(src='/javascripts/jquery.js')
+  body
+    //- a(href='/auth/google') log in with google
+    //- if user
+    //-   span #{user.name}
+    //- else 
+    //-   span go log in!
+
+    +navbar('Recipe Site')
+
+      if user
+        form#urlForm.navbar-form.navbar-left(role="search", method="POST", action='/url')
+          .form-group
+            input.form-control(type='text', name="url", placeholder="upload website")
+          button.btn.btn-default(type="submit") Upload
+      ul.nav.navbar-nav.navbar-right
+        li
+          if user
+            p.navbar-text Welcome #{user.name}
+          else
+            p.navbar-text
+              a.navbar-link(href="/auth/google") log in with google
+
+    block content
+    
+    script(src='/javascripts/index.js')
+    script(src="/javascripts/bootstrap.min.js")

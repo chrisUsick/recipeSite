@@ -1,0 +1,9 @@
+extends layout
+include recipe
+block content
+	h1 Your recipes
+	.panel-group#recipes
+		each rec, n in recipes
+			+recipe(rec, "#recipes", 'recipe' + n, rec._id)
+	script(src='javascripts/jquery.form.min.js')
+	script(src='javascripts/home.js')
